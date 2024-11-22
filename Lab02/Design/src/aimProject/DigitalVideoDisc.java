@@ -5,18 +5,26 @@ public class DigitalVideoDisc {
     private String category;
     private String director;
     private int length;
-    private float cost;
-
+    private float cost=0;
+    private static int nbDigigtalVideoDiscs=0;
+    private int id;
+    public int getId() {
+        return id;
+    }
     // Constructor to create a DVD object by title
     public DigitalVideoDisc(String _title5791) {
         this.title = _title5791;
+        nbDigigtalVideoDiscs++;
+        this.id = nbDigigtalVideoDiscs;
     }
-
+    
     // Constructor to create a DVD object by category, title, and cost
     public DigitalVideoDisc(String _category5791, String _title5791, float _cost5791) {
         this.category = _category5791;
         this.title = _title5791;
         this.cost = _cost5791;
+        nbDigigtalVideoDiscs++;
+        this.id = nbDigigtalVideoDiscs;
     }
 
     // Constructor to create a DVD object by director, category, title, and cost
@@ -25,6 +33,8 @@ public class DigitalVideoDisc {
         this.category = _category5791;
         this.title = _title5791;
         this.cost = _cost5791;
+        nbDigigtalVideoDiscs++;
+        this.id = nbDigigtalVideoDiscs;
     }
 
     // Constructor to create a DVD object by all attributes: title, category, director, length, and cost
@@ -34,6 +44,8 @@ public class DigitalVideoDisc {
         this.director = _director5791;
         this.length = _length5791;
         this.cost = _cost5791;
+        nbDigigtalVideoDiscs++;
+        this.id = nbDigigtalVideoDiscs;
     }
 
     // Getters and setters for the fields (optional, if you need to access or modify the fields)
