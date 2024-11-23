@@ -17,7 +17,7 @@ public class DigitalVideoDisc {
         nbDigigtalVideoDiscs++;
         this.id = nbDigigtalVideoDiscs;
     }
-    
+
     // Constructor to create a DVD object by category, title, and cost
     public DigitalVideoDisc(String _category5791, String _title5791, float _cost5791) {
         this.category = _category5791;
