@@ -1,69 +1,29 @@
 package aimProject;
-
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
+public class DigitalVideoDisc extends Media implements Playable {
     private String director;
     private int length;
-    private float cost=0;
-    private static int nbDigigtalVideoDiscs=0;
-    private int id;
-    public int getId() {
-        return id;
-    }
+    
     // Constructor to create a DVD object by title
-    public DigitalVideoDisc(String _title5791) {
-        this.title = _title5791;
-        nbDigigtalVideoDiscs++;
-        this.id = nbDigigtalVideoDiscs;
+    public DigitalVideoDisc(String title) {
+        super(title, null, 0); // Call Media constructor
     }
 
     // Constructor to create a DVD object by category, title, and cost
-    public DigitalVideoDisc(String _category5791, String _title5791, float _cost5791) {
-        this.category = _category5791;
-        this.title = _title5791;
-        this.cost = _cost5791;
-        nbDigigtalVideoDiscs++;
-        this.id = nbDigigtalVideoDiscs;
+    public DigitalVideoDisc(String category, String title, float cost) {
+        super(title, category, cost); // Call Media constructor
     }
-
-    // Constructor to create a DVD object by director, category, title, and cost
-    public DigitalVideoDisc(String _director5791, String _category5791, String _title5791, float _cost5791) {
-        this.director = _director5791;
-        this.category = _category5791;
-        this.title = _title5791;
-        this.cost = _cost5791;
-        nbDigigtalVideoDiscs++;
-        this.id = nbDigigtalVideoDiscs;
+    public DigitalVideoDisc(String director, String category, String title, float cost) {
+        super( title, category, cost); // Call Media constructor
+        this.director = director;
     }
-
-    // Constructor to create a DVD object by all attributes: title, category, director, length, and cost
-    public DigitalVideoDisc(String _title5791, String _category5791, String _director5791, int _length5791, float _cost5791) {
-        this.title = _title5791;
-        this.category = _category5791;
-        this.director = _director5791;
-        this.length = _length5791;
-        this.cost = _cost5791;
-        nbDigigtalVideoDiscs++;
-        this.id = nbDigigtalVideoDiscs;
+    
+    DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super(title, category, cost); // Call Media constructor
+        this.director = director;
+        this.length = length;
     }
-
     // Getters and setters for the fields (optional, if you need to access or modify the fields)
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+  
 
     public String getDirector() {
         return director;
@@ -81,21 +41,64 @@ public class DigitalVideoDisc {
         this.length = length;
     }
 
-    public float getCost() {
-        return cost;
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
+    
     public String toString() {
         return "DigitalVideoDisc{" +
-                "title='" + title + '\'' +
-                ", category='" + category + '\'' +
+                "id=" + getId() +
+                ", title='" + getTitle() + '\'' +
+                ", category='" + getCategory() + '\'' +
                 ", director='" + director + '\'' +
                 ", length=" + length +
-                ", cost=" + cost +
+                ", cost=" + getCost() +
                 '}';
     }
 }
+/*
+public class DigitalVideoDisc extends Disc implements Playable {
+    private static int nbDigitalVideoDiscs = 0;
+
+    // Constructor to create a DVD object by title
+    public DigitalVideoDisc(String _title5791) {
+        super(++nbDigitalVideoDiscs, _title5791, null, null, 0, 0f); // Use superclass constructor
+    }
+
+    // Constructor to create a DVD object by category, title, and cost
+    public DigitalVideoDisc(String _category5791, String _title5791, float _cost5791) {
+        super(++nbDigitalVideoDiscs, _title5791, _category5791, null, 0, _cost5791f); // Use superclass constructor
+    }
+
+    // Constructor to create a DVD object by director, category, title, and cost
+    public DigitalVideoDisc(String _director5791, String _category5791, String _title5791, float _cost5791) {
+        super(++nbDigitalVideoDiscs, _title5791, _category5791, _director5791, 0, _cost5791); // Use superclass constructor
+    }
+
+    // Constructor to create a DVD object by all attributes: title, category, director, length, and cost
+    public DigitalVideoDisc(String _title5791, String _category5791, String _director5791, int _length5791, float _cost5791) {
+        super(++nbDigitalVideoDiscs, _title5791, _category5791, _director5791, _length5791, _cost5791); // Use superclass constructor
+    }
+
+    // Implementing the play() method from Playable interface
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength() + " minutes");
+    }
+
+    // toString method for debugging and display
+    @Override
+    public String toString() {
+        return "DigitalVideoDisc{" +
+                "id=" + getId() +
+                ", title='" + getTitle() + '\'' +
+                ", category='" + getCategory() + '\'' +
+                ", director='" + getDirector() + '\'' +
+                ", length=" + getLength() +
+                ", cost=" + getCost() +
+                '}';
+    }
+}
+*/

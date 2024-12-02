@@ -1,5 +1,35 @@
 package aimProject;
+public class Store_Test{
+    public static void main(String[] args) {
+    	Store store = new Store();
 
+        // Create Media objects
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc( "The Lion King", "Animation","Roger Allers",  120,19.99f);
+		Book book1 = new Book( "Harry Potter", "Fantasy", 10.99f);
+		book1.addAuthor("J.K. Rowling");
+		CompactDisc cd1 = new CompactDisc("Greatest Hits", "Pop", 15.99f, 60, "Roger Allers","Various Artists");
+
+        // Add items to the store
+        store.addMedia(dvd1);
+        store.addMedia(book1);
+        store.addMedia(cd1);
+
+        // Display all items in the store
+        store.viewStore();
+
+        // Search for items in the store
+        store.searchById(1);        // Should find "The Lion King"
+        store.searchByTitle("Harry Potter"); // Should find "Harry Potter"
+
+        // Remove an item from the store
+        store.removeMedia(dvd1);
+
+        // Display the store after removal
+        store.viewStore();
+ 
+    }
+}
+/*
 public class Store_Test{
     public static void main(String[] args) {
         // Create a store with a capacity of 5 DVDs
@@ -43,3 +73,4 @@ public class Store_Test{
         store.displayStore();
     }
 }
+*/

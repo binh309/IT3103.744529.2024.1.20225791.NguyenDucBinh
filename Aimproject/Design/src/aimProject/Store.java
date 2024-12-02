@@ -1,6 +1,82 @@
 package aimProject;
-
+import java.util.ArrayList;
 public class Store {
+	 // ArrayList to hold Media objects (DigitalVideoDisc, Book, CompactDisc)
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+
+    // Method to add Media to the store
+    public void addMedia(Media media) {
+        if (!itemsInStore.contains(media)) {
+            itemsInStore.add(media);
+            System.out.println(media.getTitle() + " has been added to the store.");
+        } else {
+            System.out.println(media.getTitle() + " is already in the store.");
+        }
+    }
+
+    // Method to remove Media from the store
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println(media.getTitle() + " has been removed from the store.");
+        } else {
+            System.out.println(media.getTitle() + " is not found in the store.");
+        }
+    }
+
+    // Method to search for Media by ID
+    public void searchById(int id) {
+        boolean found = false;
+
+        for (Media media : itemsInStore) {
+            if (media != null && media.getId() == id) {
+                System.out.println("Found: " + media); // Assuming Media has a toString() method
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No Media found with ID: " + id);
+        }
+    }
+
+    // Method to search for Media by Title
+    public void searchByTitle(String title) {
+        boolean found = false;
+
+        for (Media media : itemsInStore) {
+            if (media != null && media.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("Found: " + media); // Print details of the matched media
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No Media found with title: " + title);
+        }
+    }
+    // Method to display all items in the store
+    public void viewStore() {
+        if (itemsInStore.isEmpty()) {
+            System.out.println("The store is currently empty.");
+        } else {
+            System.out.println("Items available in the store:");
+            for (Media media : itemsInStore) {
+                System.out.println(media.toString()); // Assuming Media has a toString() method
+            }
+        }
+    }
+    public Media findMediaByTitle(String title) {
+        for (Media media : itemsInStore) { // Assuming mediaList contains all the media
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null; // Return null if the media is not found
+    }
+}
+/*public class Store {
 	private DigitalVideoDisc[] dvdsInStore5791; // Array to store DVDs in the store
     private int currentCount5791; // Tracks the current number of DVDs in the store
     private int maxCapacity5791;  // Maximum capacity of the store
@@ -58,4 +134,4 @@ public class Store {
         }
         System.out.println("****************************************");
     }
-}
+}*/
